@@ -4,7 +4,15 @@ void main() => runApp(MaterialApp(
   home: UserId(),
 ));
 
-class UserId extends StatelessWidget {
+class UserId extends StatefulWidget {
+  @override
+  State<UserId> createState() => _UserIdState();
+}
+
+class _UserIdState extends State<UserId> {
+
+  int gangsterPoints = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +65,7 @@ class UserId extends StatelessWidget {
             ),
             SizedBox (height: 10.0),
             Text(
-              '1000 + 1',
+              '$gangsterPoints',
               style: TextStyle(
                 color: Colors.lime,
                 letterSpacing: 2.0,
@@ -85,6 +93,15 @@ class UserId extends StatelessWidget {
           ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            gangsterPoints += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.lime,
       ),
     );
   }
